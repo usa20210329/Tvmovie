@@ -352,7 +352,7 @@ public class VodController extends BaseController {
     public void setPlayerConfig(JSONObject playerCfg) {
         this.mPlayerConfig = playerCfg;
         updatePlayerCfgView();
-        mxPlayerExist = ucPlayer.getPackageInfo() != null;        
+        ucPlayerExist = ucPlayer.getPackageInfo() != null;        
         mxPlayerExist = MXPlayer.getPackageInfo() != null;
         reexPlayerExist = ReexPlayer.getPackageInfo() != null;
     }
