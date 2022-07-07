@@ -16,28 +16,28 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class ReexPlayer {
-    public static final String TAG = "ThirdParty.Reex";
+public class uclayer {
+    public static final String TAG = "ThirdParty.uc";
 
     private static final String PACKAGE_NAME = "xyz.re.player.ex";
     private static final String PLAYBACK_ACTIVITY = "xyz.re.player.ex.MainActivity";
 
-    private static class ReexPackageInfo {
+    private static class ucPackageInfo {
         final String packageName;
         final String activityName;
 
-        ReexPackageInfo(String packageName, String activityName) {
+        ucPackageInfo(String packageName, String activityName) {
             this.packageName = packageName;
             this.activityName = activityName;
         }
     }
 
-    private static final ReexPackageInfo[] PACKAGES = {
-            new ReexPackageInfo(PACKAGE_NAME, PLAYBACK_ACTIVITY),
+    private static final ucPackageInfo[] PACKAGES = {
+            new ucPackageInfo(PACKAGE_NAME, PLAYBACK_ACTIVITY),
     };
 
-    public static ReexPackageInfo getPackageInfo() {
-        for (ReexPackageInfo pkg : PACKAGES) {
+    public static ucPackageInfo getPackageInfo() {
+        for (ucPackageInfo pkg : PACKAGES) {
             try {
                 ApplicationInfo info = App.getInstance().getPackageManager().getApplicationInfo(pkg.packageName, 0);
                 if (info.enabled)
@@ -52,7 +52,7 @@ public class ReexPlayer {
     }
 
     public static boolean run(Activity activity, String url, String title, String subtitle, HashMap<String, String> headers) {
-        ReexPackageInfo packageInfo = getPackageInfo();
+        ucPackageInfo packageInfo = getPackageInfo();
         if (packageInfo == null)
             return false;
 
