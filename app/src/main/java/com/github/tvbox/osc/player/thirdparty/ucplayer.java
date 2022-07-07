@@ -43,9 +43,9 @@ public class ucplayer {
                 if (info.enabled)
                     return pkg;
                 else
-                    Log.v(TAG, "ucPlayer package `" + pkg.packageName + "` is disabled.");
+                    Log.v(TAG, "ucplayer package `" + pkg.packageName + "` is disabled.");
             } catch (PackageManager.NameNotFoundException ex) {
-                Log.v(TAG, "ucPlayer package `" + pkg.packageName + "` does not exist.");
+                Log.v(TAG, "ucplayer package `" + pkg.packageName + "` does not exist.");
             }
         }
         return null;
@@ -81,7 +81,7 @@ public class ucplayer {
             activity.startActivity(intent);
             return true;
         } catch (ActivityNotFoundException ex) {
-            Log.e(TAG, "Can't run ucPlayer", ex);
+            Log.e(TAG, "Can't run ucplayer", ex);
             return false;
         }
     }
