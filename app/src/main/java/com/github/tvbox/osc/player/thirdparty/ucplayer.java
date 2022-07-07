@@ -56,14 +56,19 @@ public class ucplayer {
         if (packageInfo == null)
             return false;
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
+        final Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
         intent.setPackage(packageInfo.packageName);
         intent.setComponent(new ComponentName(packageInfo.packageName, packageInfo.activityName));
         intent.setData(Uri.parse(url));
         intent.putExtra("title", title);
         intent.putExtra("name", title);
         intent.putExtra("uc.extra.title", title);
-        if (headers != null && headers.size() > 0) {
+        if (intent.resolveActivity(getPackageManager()) != null) {    
+            final ComponentName componentName = intent.resolveActivity(getPackageManager());   
+            Log.e(TAG, "componentName = " + componentName.getClassName());
+            } 
+            if (headers != null && headers.size() > 0) {
             try {
                 JSONObject json = new JSONObject();
                 for (String key : headers.keySet()) {
