@@ -16,7 +16,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class uclayer {
+public class ucplayer {
     public static final String TAG = "ThirdParty.uc";
 
     private static final String PACKAGE_NAME = "com.uc.browser";
