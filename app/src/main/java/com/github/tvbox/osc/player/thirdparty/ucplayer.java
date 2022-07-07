@@ -65,8 +65,8 @@ public class ucplayer {
         intent.putExtra("name", title);
         intent.putExtra("uc.extra.title", title);
         if (intent.resolveActivity(getPackageManager()) != null) {    
-            final ComponentName componentName = intent.resolveActivity(getPackageManager());   
-            Log.e(TAG, "componentName = " + componentName.getClassName());
+            final BrowserActivity BrowserActivity = intent.resolveActivity(getPackageManager());   
+            Log.e(TAG, "BrowserActivity = " + BrowserActivity.getClassName());
             } 
             if (headers != null && headers.size() > 0) {
             try {
