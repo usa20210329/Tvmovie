@@ -73,7 +73,7 @@ public class OkGoHelper {
             case 3: {
                 return "https://doh.360.cn/dns-query";
             } 
-            case 3: {
+            case 4: {
                 return "https://8.8.8.8/dns-query";
             } 
         }
