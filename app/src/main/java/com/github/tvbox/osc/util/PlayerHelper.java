@@ -144,7 +144,7 @@ public class PlayerHelper {
         } else if (playType == 2) {
             return "Exo播放器";
         } else if (playType == 9) {
-            return "ucPlayer";
+            return "ucplayer";
         } else if (playType == 10) {
             return "MXPlayer";
         } else if (playType == 11) {
