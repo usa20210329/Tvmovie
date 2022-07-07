@@ -1,31 +1,31 @@
-name: android_build
+name: Test Build
 
 on:
+#  push:
+#    branches:
+#      - main
+#  pull_request:
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
-      - name: Set up JDK
-        uses: actions/setup-java@v1
+      - uses: actions/checkout@v3
         with:
-          java-version: 1.8
-      - id: get-project
-        name: Get project name
-        run: echo "::set-output name=PROJECT::$(cat project-to-build)"
-      - name: Clone project
-        run: git clone --depth=1 ${{ steps.get-project.outputs.PROJECT }} project
-      - name: Build the app
-        working-directory: ./project
+          fetch-depth: 0
+      - name: Build With Gradle
         run: |
-          if [ ! -f "gradlew" ]; then gradle wrapper; fi
           chmod +x gradlew
-          ./gradlew assembleDebug --stacktrace
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
+          ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
+      - name: Prepare App
+        run: |
+          mkdir -p ${{ github.workspace }}/apk/
+          for file in `find ~ -name "*.apk" -print`; do
+            mv "$file" ${{ github.workspace }}/apk/
+          done
+      - name: Upload App To Artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: my-build-apk
-          path: ./**/*.apk
+          name: com.github.tvbox.osc
+          path: ${{ github.workspace }}/apk/*
