@@ -43,9 +43,9 @@ public class ReexPlayer {
                 if (info.enabled)
                     return pkg;
                 else
-                    Log.v(TAG, "Reex Player package `" + pkg.packageName + "` is disabled.");
+                    Log.v(TAG, "uc Player package `" + pkg.packageName + "` is disabled.");
             } catch (PackageManager.NameNotFoundException ex) {
-                Log.v(TAG, "Reex Player package `" + pkg.packageName + "` does not exist.");
+                Log.v(TAG, "uc Player package `" + pkg.packageName + "` does not exist.");
             }
         }
         return null;
@@ -62,26 +62,26 @@ public class ReexPlayer {
         intent.setData(Uri.parse(url));
         intent.putExtra("title", title);
         intent.putExtra("name", title);
-        intent.putExtra("reex.extra.title", title);
+        intent.putExtra("uc.extra.title", title);
         if (headers != null && headers.size() > 0) {
             try {
                 JSONObject json = new JSONObject();
                 for (String key : headers.keySet()) {
                     json.put(key, headers.get(key).trim());
                 }
-                intent.putExtra("reex.extra.http_header", json.toString());
+                intent.putExtra("uc.extra.http_header", json.toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
         if (subtitle != null && !subtitle.isEmpty()) {
-            intent.putExtra("reex.extra.subtitle", subtitle);
+            intent.putExtra("uc.extra.subtitle", subtitle);
         }
         try {
             activity.startActivity(intent);
             return true;
         } catch (ActivityNotFoundException ex) {
-            Log.e(TAG, "Can't run Reex Player(Pro)", ex);
+            Log.e(TAG, "Can't run uc Player(Pro)", ex);
             return false;
         }
     }
