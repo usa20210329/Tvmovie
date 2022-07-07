@@ -19,8 +19,8 @@ import java.util.HashMap;
 public class uclayer {
     public static final String TAG = "ThirdParty.uc";
 
-    private static final String PACKAGE_NAME = "xyz.re.player.ex";
-    private static final String PLAYBACK_ACTIVITY = "xyz.re.player.ex.MainActivity";
+    private static final String PACKAGE_NAME = "com.uc.browser";
+    private static final String PLAYBACK_ACTIVITY = ""com.uc.browser.ActivityUpdate";
 
     private static class ucPackageInfo {
         final String packageName;
