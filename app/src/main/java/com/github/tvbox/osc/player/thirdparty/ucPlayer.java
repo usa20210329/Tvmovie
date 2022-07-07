@@ -20,7 +20,7 @@ public class uclayer {
     public static final String TAG = "ThirdParty.uc";
 
     private static final String PACKAGE_NAME = "com.uc.browser";
-    private static final String PLAYBACK_ACTIVITY = ""com.uc.browser.ActivityUpdate";
+    private static final String PLAYBACK_ACTIVITY = "com.uc.browser.ActivityUpdate";
 
     private static class ucPackageInfo {
         final String packageName;
@@ -81,7 +81,7 @@ public class uclayer {
             activity.startActivity(intent);
             return true;
         } catch (ActivityNotFoundException ex) {
-            Log.e(TAG, "Can't run uc Player(Pro)", ex);
+            Log.e(TAG, "Can't run uc Playe", ex);
             return false;
         }
     }
