@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
       - name: Check New Commit
         run: |
-          commit=$(curl -sL https://github.com/hfr1107/TVBoxOSC/commits/main |grep -o '/CatVodTVOfficial/TVBoxOSC/commit/[a-z0-9]\+' |head -1 | cut -d\/ -f5)
+          commit=$(curl -sL https://github.com/hfr1107/TVBoxOSC7.8/commits/main |grep -o '/CatVodTVOfficial/TVBoxOSC/commit/[a-z0-9]\+' |head -1 | cut -d\/ -f5)
           shortCommit=$(echo $commit |cut -c 1-20)
           if ! git log --oneline |grep -q "$shortCommit"; then
             echo "commit=$commit" >> $GITHUB_ENV
