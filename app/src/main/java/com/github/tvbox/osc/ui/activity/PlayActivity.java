@@ -237,7 +237,7 @@ public class PlayActivity extends BaseActivity {
                                 boolean callResult = false;
                                 switch (playerType) {
                                     case 9: {
-                                        callResult =ucPlayer.run(PlayActivity.this, url, playTitle, playSubtitle, headers);
+                                        callResult =ucplayer.run(PlayActivity.this, url, playTitle, playSubtitle, headers);
                                         break;
                                     }
                                     case 10: {
