@@ -1,3 +1,5 @@
+package com.github.tvbox.osc.player.thirdparty;
+
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
@@ -17,8 +19,8 @@ import java.util.HashMap;
 public class ucplayer {
     public static final String TAG = "ThirdParty.uc";
 
-    private static final String PACKAGE_NAME = "com.UCMobile";
-    private static final String PLAYBACK_ACTIVITY = "com.UCMobile.main.UCMobile";
+    private static final String PACKAGE_NAME = "com.android.browser";
+    private static final String PLAYBACK_ACTIVITY = "com.android.browser.BrowserActivity";
 
     private static class ucPackageInfo {
         final String packageName;
@@ -54,15 +56,14 @@ public class ucplayer {
         if (packageInfo == null)
             return false;
 
-        Intent intent = new Intent();
+        Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setPackage(packageInfo.packageName);
         intent.setComponent(new ComponentName(packageInfo.packageName, packageInfo.activityName));
         intent.setData(Uri.parse(url));
-        intent.setAction(Intent.ACTION_VIEW);
         intent.putExtra("title", title);
         intent.putExtra("name", title);
         intent.putExtra("uc.extra.title", title);
-                  if (headers != null && headers.size() > 0) {
+        if (headers != null && headers.size() > 0) {
             try {
                 JSONObject json = new JSONObject();
                 for (String key : headers.keySet()) {
