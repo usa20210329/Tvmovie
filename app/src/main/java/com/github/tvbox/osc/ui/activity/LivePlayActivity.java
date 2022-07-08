@@ -115,6 +115,8 @@ public class LivePlayActivity extends BaseActivity {
         initSettingItemView();
         initLiveChannelList();
         initLiveSettingGroupList();
+        showTime();
+        showNetSpeed();
     }
 
     @Override
@@ -823,8 +825,6 @@ public class LivePlayActivity extends BaseActivity {
         }
 
         livePlayerManager.init(mVideoView);
-        showTime();
-        showNetSpeed();
         tvLeftChannelListLayout.setVisibility(View.INVISIBLE);
         tvRightSettingLayout.setVisibility(View.INVISIBLE);
 
@@ -917,7 +917,6 @@ public class LivePlayActivity extends BaseActivity {
     private Runnable mUpdateNetSpeedRun = new Runnable() {
         @Override
         public void run() {
-            if (mVideoView == null) return;
             tvNetSpeed.setText(String.format("%.2fMB/s", (float)mVideoView.getTcpSpeed() / 1024.0 / 1024.0));
             mHandler.postDelayed(this, 1000);
         }
