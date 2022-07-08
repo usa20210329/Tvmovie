@@ -17,8 +17,8 @@ import java.util.HashMap;
 public class ucplayer {
     public static final String TAG = "ThirdParty.uc";
 
-    private static final String PACKAGE_NAME = "com.android.browser";
-    private static final String PLAYBACK_ACTIVITY = "com.android.browser.BrowserActivity";
+    private static final String PACKAGE_NAME = "com.UCMobile";
+    private static final String PLAYBACK_ACTIVITY = "com.UCMobile.main.UCMobile";
 
     private static class ucPackageInfo {
         final String packageName;
@@ -54,19 +54,21 @@ public class ucplayer {
         if (packageInfo == null)
             return false;
 
-                Intent intent1 = new Intent();
-        intent1.setAction(Intent.ACTION_VIEW);
-        intent1.setData(Uri.parse(url));
-        intent1.putExtra("title", title);
-        intent1.putExtra("name", title);
-        inten1t.putExtra("uc.extra.title", title);
-            if (headers != null && headers.size() > 0) {
+        Intent intent = new Intent();
+        intent.setPackage(packageInfo.packageName);
+        intent.setComponent(new ComponentName(packageInfo.packageName, packageInfo.activityName));
+        intent.setData(Uri.parse(url));
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.putExtra("title", title);
+        intent.putExtra("name", title);
+        intent.putExtra("uc.extra.title", title);
+                  if (headers != null && headers.size() > 0) {
             try {
                 JSONObject json = new JSONObject();
                 for (String key : headers.keySet()) {
                     json.put(key, headers.get(key).trim());
                 }
-                inten1t.putExtra("uc.extra.http_header", json.toString());
+                intent.putExtra("uc.extra.http_header", json.toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -75,7 +77,7 @@ public class ucplayer {
             intent.putExtra("uc.extra.subtitle", subtitle);
         }
         try {
-             startActivity(Intent.createChooser(intent1,getString(R.string.about_cherry_choice_browser)));
+            activity.startActivity(intent);
             return true;
         } catch (ActivityNotFoundException ex) {
             Log.e(TAG, "Can't run ucplayer", ex);
