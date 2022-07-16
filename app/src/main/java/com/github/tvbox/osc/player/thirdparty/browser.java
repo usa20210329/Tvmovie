@@ -56,10 +56,10 @@ public class browser {
         if (packageInfo == null)
             return false;
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Intent intent1 = new Intent(Intent.ACTION_VIEW);
         intent.setPackage(packageInfo.packageName);
         intent.setComponent(new ComponentName(packageInfo.packageName, packageInfo.activityName));
-        intent.setData(Uri.parse(url));
+        intent1.setData(Uri.parse(url));
         intent.putExtra("title", title);
         intent.putExtra("name", title);
         intent.putExtra("browser.extra.title", title);
@@ -78,7 +78,7 @@ public class browser {
             intent.putExtra("browser.extra.subtitle", subtitle);
         }
         try {
-            activity.startActivity(Intent.createChooser(intent,getString(R.string.about_cherry_choice_browser)));
+            activity.startActivity(Intent.createChooser(intent1,getString(R.string.about_cherry_choice_browser)));
             return true;
         } catch (ActivityNotFoundException ex) {
             Log.e(TAG, "Can't run browser", ex);
