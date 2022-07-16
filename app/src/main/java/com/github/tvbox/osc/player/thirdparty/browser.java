@@ -19,8 +19,8 @@ import java.util.HashMap;
 public class browser {
     public static final String TAG = "ThirdParty.browser";
 
-    private static final String PACKAGE_NAME = "com.UCMobile";
-    private static final String PLAYBACK_ACTIVITY = "com.UCMobile.main.UCMobile";
+    private static final String PACKAGE_NAME = "com.android.browser";
+    private static final String PLAYBACK_ACTIVITY = "com.android.browser.BrowserActivity";
 
     private static class browserPackageInfo {
         final String packageName;
