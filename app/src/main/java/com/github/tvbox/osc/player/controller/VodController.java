@@ -17,6 +17,7 @@ import com.github.tvbox.osc.R;
 import com.github.tvbox.osc.api.ApiConfig;
 import com.github.tvbox.osc.bean.IJKCode;
 import com.github.tvbox.osc.bean.ParseBean;
+import com.github.tvbox.osc.player.thirdparty.browser;
 import com.github.tvbox.osc.player.thirdparty.ucplayer;
 import com.github.tvbox.osc.player.thirdparty.MXPlayer;
 import com.github.tvbox.osc.player.thirdparty.ReexPlayer;
@@ -239,8 +240,10 @@ public class VodController extends BaseController {
                         playerType++;
                         if (playerType <= 2) {
                             playerVail = true;
-                        } else if (playerType == 9) {
+                        } else if (playerType == 8) {
                             playerVail = ucplayerExist;
+                        } else if (playerType == 9) {
+                            playerVail = browserExist;
                         } else if (playerType == 10) {
                             playerVail = mxPlayerExist;
                         } else if (playerType == 11) {
@@ -352,7 +355,8 @@ public class VodController extends BaseController {
     public void setPlayerConfig(JSONObject playerCfg) {
         this.mPlayerConfig = playerCfg;
         updatePlayerCfgView();
-        ucplayerExist = ucplayer.getPackageInfo() != null;        
+        ucplayerExist = ucplayer.getPackageInfo() != null; 
+        browserExist = browser.getPackageInfo() != null; 
         mxPlayerExist = MXPlayer.getPackageInfo() != null;
         reexPlayerExist = ReexPlayer.getPackageInfo() != null;
     }
