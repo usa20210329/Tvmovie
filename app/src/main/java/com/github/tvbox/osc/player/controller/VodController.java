@@ -349,6 +349,7 @@ public class VodController extends BaseController {
     private JSONObject mPlayerConfig = null;
 
     private boolean ucplayerExist = false;
+    private boolean browserExist = false;
     private boolean mxPlayerExist = false;
     private boolean reexPlayerExist = false;
 
