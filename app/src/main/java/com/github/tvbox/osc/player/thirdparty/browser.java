@@ -8,7 +8,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.util.Log;
-import com.android.settings.R;
 
 
 import com.github.tvbox.osc.base.App;
