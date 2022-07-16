@@ -85,7 +85,7 @@ public class browser {
             intent.putExtra("browser.extra.subtitle", subtitle);
         }
         try {
-            activity.startActivity(Intent.createChooser(intent,“请选择一款浏览器));
+            activity.startActivity(Intent.createChooser(intent,“请选择一款浏览器“));
             return true;
         } catch (ActivityNotFoundException ex) {
             Log.e(TAG, "Can't run browser", ex);
