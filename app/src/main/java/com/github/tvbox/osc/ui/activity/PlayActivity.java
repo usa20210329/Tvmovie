@@ -44,6 +44,7 @@ import com.github.tvbox.osc.bean.VodInfo;
 import com.github.tvbox.osc.cache.CacheManager;
 import com.github.tvbox.osc.event.RefreshEvent;
 import com.github.tvbox.osc.player.controller.VodController;
+import com.github.tvbox.osc.player.thirdparty.browser;
 import com.github.tvbox.osc.player.thirdparty.ucplayer;
 import com.github.tvbox.osc.player.thirdparty.MXPlayer;
 import com.github.tvbox.osc.player.thirdparty.ReexPlayer;
@@ -230,14 +231,18 @@ public class PlayActivity extends BaseActivity {
                     if (url != null) {
                         try {
                             int playerType = mVodPlayerCfg.getInt("pl");
-                            if (playerType >= 9) {
+                            if (playerType >= 8) {
                                 VodInfo.VodSeries vs = mVodInfo.seriesMap.get(mVodInfo.playFlag).get(mVodInfo.playIndex);
                                 String playTitle = mVodInfo.name + " " + vs.name;
                                 setTip("调用外部播放器" + PlayerHelper.getPlayerName(playerType) + "进行播放", true, false);
                                 boolean callResult = false;
                                 switch (playerType) {
-                                    case 9: {
+                                    case 8: {
                                         callResult =ucplayer.run(PlayActivity.this, url, playTitle, playSubtitle, headers);
+                                        break;
+                                    }
+                                    case 9: {
+                                        callResult =browser.run(PlayActivity.this, url, playTitle, playSubtitle, headers);
                                         break;
                                     }
                                     case 10: {
@@ -1189,7 +1194,7 @@ public class PlayActivity extends BaseActivity {
         @Override
         public void onReceivedSslError(XWalkView view, ValueCallback<Boolean> callback, SslError error) {
             callback.onReceiveValue(true);
-        }
+       }
     }
 
 }
